@@ -73,6 +73,7 @@ import io.grpc.stub.StreamObserver;
 
 
 public class SpeechService extends Service {
+    public static String language = "en-GB";
 
     public interface Listener {
 
@@ -219,6 +220,7 @@ public class SpeechService extends Service {
         if (!TextUtils.isEmpty(country)) {
             language.append("-");
             language.append(country);
+
         }
         return language.toString();
     }
@@ -252,7 +254,7 @@ public class SpeechService extends Service {
         mRequestObserver.onNext(StreamingRecognizeRequest.newBuilder()
                 .setStreamingConfig(StreamingRecognitionConfig.newBuilder()
                         .setConfig(RecognitionConfig.newBuilder()
-                                .setLanguageCode(getDefaultLanguageCode())
+                                .setLanguageCode(language)
                                 .setEncoding(RecognitionConfig.AudioEncoding.LINEAR16)
                                 .setSampleRateHertz(sampleRate)
                                 .build())

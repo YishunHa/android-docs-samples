@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements MessageDialogFrag
     private VoiceRecorder mVoiceRecorder;
     private final VoiceRecorder.Callback mVoiceCallback = new VoiceRecorder.Callback() {
 
+
         @Override
         public void onVoiceStart() {
             showStatus(true);
@@ -110,22 +111,20 @@ public class MainActivity extends AppCompatActivity implements MessageDialogFrag
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         final Resources resources = getResources();
         final Resources.Theme theme = getTheme();
         mColorHearing = ResourcesCompat.getColor(resources, R.color.status_hearing, theme);
         mColorNotHearing = ResourcesCompat.getColor(resources, R.color.status_not_hearing, theme);
-
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         mStatus = (TextView) findViewById(R.id.status);
         mText = (TextView) findViewById(R.id.text);
-
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         final ArrayList<String> results = savedInstanceState == null ? null :
                 savedInstanceState.getStringArrayList(STATE_RESULTS);
         mAdapter = new ResultAdapter(results);
         mRecyclerView.setAdapter(mAdapter);
+
     }
 
     @Override
@@ -188,17 +187,43 @@ public class MainActivity extends AppCompatActivity implements MessageDialogFrag
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+
     }
 
     @Override
+
+
     public boolean onOptionsItemSelected(MenuItem item) {
+
+
         switch (item.getItemId()) {
-            case R.id.action_file:
-                mSpeechService.recognizeInputStream(getResources().openRawResource(R.raw.audio));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+
+            case R.id.action_file: {
+                SpeechService.language = "en-GB";
+                break;
+            }
+            case R.id.Man: {
+                SpeechService.language = "cmn-Hans-CN";
+                break;
+            }
+            case R.id.Can: {
+
+                SpeechService.language = "yue-Hant-HK";
+                break;
+            }
+            case R.id.Ko: {
+
+                SpeechService.language = "ko-KR";
+                break;
+            }
+            case R.id.Jpa: {
+
+                SpeechService.language = "ja-JP";
+                break;
+            }
+
         }
+        return super.onOptionsItemSelected(item);
     }
 
     private void startVoiceRecorder() {

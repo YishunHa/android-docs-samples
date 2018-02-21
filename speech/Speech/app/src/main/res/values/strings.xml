@@ -15,8 +15,9 @@
   limitations under the License.
 -->
 <resources>
-    <string name="app_name">Speech</string>
+    <string name="app_name">STT Test</string>
     <string name="permission_message">This app needs to record audio and recognize your speech.</string>
     <string name="listening">Listening…</string>
-    <string name="load_file">Load file</string>
+    <string name="load_file">English</string>
+    <string name="Jp">Jpannese</string>
 </resources>

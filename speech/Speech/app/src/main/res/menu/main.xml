@@ -18,9 +18,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/action_file"
-        android:title="@string/load_file"
-        app:showAsAction="ifRoom"/>
+    <group android:theme="@style/ThemeOverlay.AppCompat.Light">
+        <item
+            android:id="@+id/action_file"
+            android:title="@string/load_file" />
+        <item
+            android:id="@+id/Man"
+            android:title="普通话" />
+        <item
+            android:id="@+id/Can"
+            android:title="粤语" />
+        <item
+            android:id="@+id/Ko"
+            android:title="Korean" />
+        <item
+            android:id="@+id/Jpa"
+            android:title="@string/Jp" />
+    </group>
 
 </menu>
